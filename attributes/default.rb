@@ -43,6 +43,13 @@ default["tomcat"]["certificate_dn"] = "cn=localhost"
 default["tomcat"]["loglevel"] = "INFO"
 default["tomcat"]["tomcat_auth"] = "true"
 
+default["tomcat"]["accept_count"] = 100
+default["tomcat"]["enable_lookups"] = "false"
+default["tomcat"]["max_threads"] = node["tomcat"]["accept_count"]
+default["tomcat"]["min_spare_threads"] = node["tomcat"]["accept_count"]
+default["tomcat"]["max_spare_threads"] = node["tomcat"]["accept_count"]
+default["tomcat"]["max_keep_alive_requests"] = 1
+
 case node['platform']
 when "centos","redhat","fedora"
   default["tomcat"]["user"] = "tomcat"
